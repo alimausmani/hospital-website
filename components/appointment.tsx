@@ -167,7 +167,6 @@ export default function Appointment() {
             We&apos;ll contact you within 24 hours to confirm your appointment.
           </p>
         </form>
-        </div>
 
         {/* Info Cards */}
         <div className="mt-12 grid md:grid-cols-3 gap-6">
