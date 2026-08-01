@@ -2,8 +2,10 @@
 
 import { motion } from 'framer-motion';
 import { Star, AlertCircle, Users, Zap } from 'lucide-react';
+import { useAppointmentModal } from '@/hooks/use-appointment-modal';
 
 export default function Hero() {
+  const { openModal } = useAppointmentModal();
   const stats = [
     { icon: Star, label: '5.0 Rating', value: '5.0' },
     { icon: Users, label: 'Happy Patients', value: '73+' },
@@ -67,6 +69,7 @@ export default function Hero() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={openModal}
                 className="px-8 py-3.5 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-all smooth-shadow"
               >
                 Book Appointment

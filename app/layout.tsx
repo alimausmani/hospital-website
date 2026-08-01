@@ -1,6 +1,7 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { Poppins } from 'next/font/google'
+import Providers from '@/components/providers'
 import './globals.css'
 
 const poppins = Poppins({
@@ -34,7 +35,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={poppins.variable}>
       <body className="font-poppins antialiased bg-white text-gray-900">
-        {children}
+        <Providers>{children}</Providers>
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>

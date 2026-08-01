@@ -3,12 +3,19 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Menu, X } from 'lucide-react';
+import { LayoutDashboard, Menu, UserCircle2, X } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useAuth } from '@/hooks/use-auth';
+import { useAppointmentModal } from '@/hooks/use-appointment-modal';
+import ProfileDropdown from './profile-dropdown';
+import { usePathname } from 'next/navigation';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
+  const { user, logout } = useAuth();
+  const { openModal } = useAppointmentModal();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,15 +25,21 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navLinks = [
-    { label: 'Home', href: '#home' },
-    { label: 'About', href: '#about' },
-    { label: 'Departments', href: '#departments' },
-    { label: 'Doctors', href: '#doctors' },
-    { label: 'Services', href: '#services' },
-    { label: 'Gallery', href: '#gallery' },
-    { label: 'Contact', href: '#contact' },
-  ];
+  const navLinks = pathname === '/'
+    ? [
+        { label: 'Home', href: '#home' },
+        { label: 'About', href: '#about' },
+        { label: 'Departments', href: '#departments' },
+        { label: 'Doctors', href: '#doctors' },
+        { label: 'Services', href: '#services' },
+        { label: 'Gallery', href: '#gallery' },
+        { label: 'Contact', href: '#contact' },
+      ]
+    : [
+        { label: 'Home', href: '/' },
+        { label: 'Dashboard', href: '/dashboard' },
+        { label: 'Profile', href: '/profile' },
+      ];
 
   return (
     <motion.header
@@ -70,14 +83,16 @@ export default function Header() {
           </nav>
 
           {/* CTA Button */}
-          <div className="hidden md:block">
+          <div className="hidden md:flex items-center gap-3">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={openModal}
               className="px-6 py-2.5 bg-blue-600 text-white rounded-lg font-semibold text-sm hover:bg-blue-700 transition-all"
             >
               Book Appointment
             </motion.button>
+            {user ? <ProfileDropdown name={user.name} onLogout={logout} /> : null}
           </div>
 
           {/* Mobile Menu Toggle */}
@@ -109,8 +124,31 @@ export default function Header() {
                 </Link>
               ))}
               <div className="px-4 py-3 flex flex-col gap-2 border-t border-gray-200 mt-2">
-                <button className="w-full px-4 py-2.5 bg-blue-600 text-white rounded-lg font-semibold text-sm hover:bg-blue-700 transition">
+                <button
+                  onClick={openModal}
+                  className="w-full px-4 py-2.5 bg-blue-600 text-white rounded-lg font-semibold text-sm hover:bg-blue-700 transition"
+                >
                   Book Appointment
+                </button>
+                <Link
+                  href="/dashboard"
+                  className="w-full px-4 py-2.5 border border-gray-200 text-gray-700 rounded-lg font-semibold text-sm hover:bg-blue-50 hover:text-blue-600 transition flex items-center justify-center gap-2"
+                >
+                  <LayoutDashboard className="h-4 w-4" />
+                  Dashboard
+                </Link>
+                <Link
+                  href="/profile"
+                  className="w-full px-4 py-2.5 border border-gray-200 text-gray-700 rounded-lg font-semibold text-sm hover:bg-blue-50 hover:text-blue-600 transition flex items-center justify-center gap-2"
+                >
+                  <UserCircle2 className="h-4 w-4" />
+                  Profile
+                </Link>
+                <button
+                  onClick={logout}
+                  className="w-full px-4 py-2.5 border border-red-200 text-red-600 rounded-lg font-semibold text-sm hover:bg-red-50 transition"
+                >
+                  Logout
                 </button>
               </div>
             </div>
