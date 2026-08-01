@@ -13,6 +13,7 @@ import FAQ from '@/components/premium/faq';
 import Contact from '@/components/premium/contact';
 import Footer from '@/components/premium/footer';
 import FloatingButtons from '@/components/premium/floating-buttons';
+import { AppointmentModal } from '@/components/appointment-modal';
 
 export default function Home() {
   return (
@@ -32,6 +33,7 @@ export default function Home() {
       <Contact />
       <Footer />
       <FloatingButtons />
+      <AppointmentModal />
     </main>
   );
 }

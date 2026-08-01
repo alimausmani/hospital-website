@@ -2,13 +2,18 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, LogOut, User, Calendar } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useAuth } from '@/lib/auth-context';
 
 export default function Header() {
+  const router = useRouter();
+  const { user, logout } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -69,15 +74,74 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* CTA Button */}
-          <div className="hidden md:block">
+          {/* CTA Button & User Profile */}
+          <div className="hidden md:flex items-center gap-4">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={() => {
+                const modal = document.getElementById('appointmentModal');
+                if (modal) {
+                  (modal as any).showModal?.();
+                }
+              }}
               className="px-6 py-2.5 bg-blue-600 text-white rounded-lg font-semibold text-sm hover:bg-blue-700 transition-all"
             >
               Book Appointment
             </motion.button>
+
+            {/* User Profile Dropdown */}
+            {user && (
+              <div className="relative">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  onClick={() => setIsProfileOpen(!isProfileOpen)}
+                  className="flex items-center gap-2 px-4 py-2.5 bg-gray-100 hover:bg-gray-200 rounded-lg transition"
+                >
+                  <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center text-sm font-bold">
+                    {user.name.charAt(0).toUpperCase()}
+                  </div>
+                  <span className="text-sm font-medium text-gray-900">{user.name.split(' ')[0]}</span>
+                </motion.button>
+
+                {/* Dropdown Menu */}
+                {isProfileOpen && (
+                  <motion.div
+                    className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50"
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                  >
+                    <Link
+                      href="/profile"
+                      className="flex items-center gap-3 px-4 py-2.5 text-gray-700 hover:bg-gray-50 transition"
+                      onClick={() => setIsProfileOpen(false)}
+                    >
+                      <User size={18} />
+                      <span className="text-sm font-medium">Profile</span>
+                    </Link>
+                    <Link
+                      href="/dashboard"
+                      className="flex items-center gap-3 px-4 py-2.5 text-gray-700 hover:bg-gray-50 transition"
+                      onClick={() => setIsProfileOpen(false)}
+                    >
+                      <Calendar size={18} />
+                      <span className="text-sm font-medium">Appointments</span>
+                    </Link>
+                    <button
+                      onClick={() => {
+                        logout();
+                        setIsProfileOpen(false);
+                        router.push('/login');
+                      }}
+                      className="w-full flex items-center gap-3 px-4 py-2.5 text-red-600 hover:bg-red-50 transition border-t border-gray-200 mt-2 pt-2"
+                    >
+                      <LogOut size={18} />
+                      <span className="text-sm font-medium">Logout</span>
+                    </button>
+                  </motion.div>
+                )}
+              </div>
+            )}
           </div>
 
           {/* Mobile Menu Toggle */}
