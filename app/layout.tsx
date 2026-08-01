@@ -3,8 +3,8 @@ import type { Metadata, Viewport } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
+  title: 'HealthCare Plus Hospital | Premier Multi-Specialty Medical Services',
+  description: 'Leading multi-specialty hospital providing comprehensive medical care, emergency services, and expert healthcare professionals. Book appointments online.',
   generator: 'v0.app',
   icons: {
     icon: [
@@ -26,10 +26,9 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  colorScheme: 'light dark',
+  colorScheme: 'light',
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: 'white' },
-    { media: '(prefers-color-scheme: dark)', color: 'black' },
+    { media: '(prefers-color-scheme: light)', color: '#0066CC' },
   ],
 }
 
