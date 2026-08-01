@@ -33,15 +33,12 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="py-20 md:py-32 bg-background">
+    <section className="py-20 md:py-32 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-secondary/10 px-4 py-2 rounded-full mb-4">
-            <div className="w-2 h-2 bg-secondary rounded-full" />
-            <span className="text-sm font-semibold text-secondary">Patient Stories</span>
-          </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4 text-balance">
+          <span className="text-sm font-bold text-primary uppercase tracking-wider">Patient Stories</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4 mt-2 text-balance">
             What Our Patients Say
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-pretty">
@@ -50,14 +47,14 @@ export default function Testimonials() {
         </div>
 
         {/* Testimonials Grid */}
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-6 mb-16">
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="bg-white rounded-xl p-8 border border-border hover:shadow-lg transition relative"
+              className="bg-card rounded-xl p-7 border border-border hover:shadow-lg hover:border-primary/40 transition relative"
             >
               {/* Quote Icon */}
-              <Quote className="absolute top-4 right-4 w-8 h-8 text-primary/10" />
+              <Quote className="absolute top-6 right-6 w-6 h-6 text-primary/15" />
 
               {/* Rating */}
               <div className="flex gap-1 mb-4">

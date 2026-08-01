@@ -41,45 +41,39 @@ const departments = [
 
 export default function Departments() {
   return (
-    <section id="departments" className="py-20 md:py-32 bg-background">
+    <section id="departments" className="py-20 md:py-32 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-secondary/10 px-4 py-2 rounded-full mb-4">
-            <div className="w-2 h-2 bg-secondary rounded-full" />
-            <span className="text-sm font-semibold text-secondary">Our Departments</span>
-          </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4 text-balance">
-            World-Class Departments
+          <span className="text-sm font-bold text-primary uppercase tracking-wider">Our Departments</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4 mt-2 text-balance">
+            Specialized Care Centers
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-pretty">
-            Each department is equipped with cutting-edge technology and staffed by highly qualified professionals
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Each department features advanced technology and experienced specialists dedicated to your care
           </p>
         </div>
 
         {/* Departments Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {departments.map((dept, index) => {
             const Icon = dept.icon;
             return (
               <div
                 key={index}
-                className="group bg-white rounded-xl p-8 border border-border hover:border-secondary hover:shadow-lg transition cursor-pointer"
+                className="group bg-card rounded-xl p-7 border border-border hover:border-primary/40 hover:shadow-lg transition cursor-pointer"
               >
-                <div className="flex items-start justify-between mb-4">
-                  <div className="bg-secondary/10 w-12 h-12 rounded-lg flex items-center justify-center group-hover:bg-secondary/20 transition">
-                    <Icon className="w-6 h-6 text-secondary" />
-                  </div>
-                  <div className="w-2 h-2 bg-secondary rounded-full opacity-0 group-hover:opacity-100 transition" />
+                <div className="bg-secondary w-12 h-12 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary/20 transition">
+                  <Icon className="w-6 h-6 text-primary" />
                 </div>
 
-                <h3 className="text-2xl font-bold text-foreground mb-2">{dept.name}</h3>
-                <p className="text-muted-foreground mb-6">{dept.description}</p>
+                <h3 className="text-xl font-bold text-foreground mb-2">{dept.name}</h3>
+                <p className="text-muted-foreground text-sm mb-4 leading-relaxed">{dept.description}</p>
 
-                <div className="space-y-2">
+                <div className="space-y-2 pt-4 border-t border-border">
                   {dept.specialties.map((specialty, idx) => (
-                    <div key={idx} className="flex items-center gap-2 text-sm text-foreground">
-                      <div className="w-1.5 h-1.5 bg-secondary rounded-full" />
+                    <div key={idx} className="flex items-center gap-2 text-sm text-foreground font-medium">
+                      <div className="w-1.5 h-1.5 bg-primary rounded-full" />
                       {specialty}
                     </div>
                   ))}

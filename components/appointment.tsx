@@ -38,16 +38,13 @@ export default function Appointment() {
   ];
 
   return (
-    <section id="appointment" className="py-20 md:py-32 bg-gradient-to-br from-primary/5 to-secondary/5">
+    <section id="appointment" className="py-20 md:py-32 bg-white">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full mb-4">
-            <Calendar size={16} className="text-primary" />
-            <span className="text-sm font-semibold text-primary">Book Your Appointment</span>
-          </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4 text-balance">
-            Schedule a Consultation
+          <span className="text-sm font-bold text-primary uppercase tracking-wider">Book Your Visit</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4 mt-2 text-balance">
+            Schedule an Appointment
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-pretty">
             Fill out the form below and our team will contact you to confirm your appointment
@@ -55,130 +52,121 @@ export default function Appointment() {
         </div>
 
         {/* Form */}
-        <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12 border border-border">
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid md:grid-cols-2 gap-6">
-              {/* Name */}
-              <div>
-                <label className="block text-sm font-semibold text-foreground mb-2">Full Name</label>
-                <div className="relative">
-                  <User className="absolute left-4 top-3.5 w-5 h-5 text-muted-foreground pointer-events-none" />
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    placeholder="John Doe"
-                    required
-                    className="w-full pl-12 pr-4 py-3 border border-border rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition"
-                  />
-                </div>
-              </div>
-
-              {/* Email */}
-              <div>
-                <label className="block text-sm font-semibold text-foreground mb-2">Email Address</label>
-                <div className="relative">
-                  <Mail className="absolute left-4 top-3.5 w-5 h-5 text-muted-foreground pointer-events-none" />
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder="john@example.com"
-                    required
-                    className="w-full pl-12 pr-4 py-3 border border-border rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition"
-                  />
-                </div>
-              </div>
-
-              {/* Phone */}
-              <div>
-                <label className="block text-sm font-semibold text-foreground mb-2">Phone Number</label>
-                <div className="relative">
-                  <Phone className="absolute left-4 top-3.5 w-5 h-5 text-muted-foreground pointer-events-none" />
-                  <input
-                    type="tel"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    placeholder="+1 (800) 123-4567"
-                    required
-                    className="w-full pl-12 pr-4 py-3 border border-border rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition"
-                  />
-                </div>
-              </div>
-
-              {/* Date */}
-              <div>
-                <label className="block text-sm font-semibold text-foreground mb-2">Preferred Date</label>
-                <div className="relative">
-                  <Calendar className="absolute left-4 top-3.5 w-5 h-5 text-muted-foreground pointer-events-none" />
-                  <input
-                    type="date"
-                    name="date"
-                    value={formData.date}
-                    onChange={handleChange}
-                    required
-                    className="w-full pl-12 pr-4 py-3 border border-border rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition"
-                  />
-                </div>
-              </div>
-
-              {/* Department */}
-              <div>
-                <label className="block text-sm font-semibold text-foreground mb-2">Department</label>
-                <div className="relative">
-                  <Stethoscope className="absolute left-4 top-3.5 w-5 h-5 text-muted-foreground pointer-events-none" />
-                  <select
-                    name="department"
-                    value={formData.department}
-                    onChange={handleChange}
-                    required
-                    className="w-full pl-12 pr-4 py-3 border border-border rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition appearance-none bg-white"
-                  >
-                    {departments.map((dept) => (
-                      <option key={dept} value={dept === 'Select Department' ? '' : dept}>
-                        {dept}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-
-              {/* Message */}
-              <div className="md:col-span-2">
-                <label className="block text-sm font-semibold text-foreground mb-2">Additional Message</label>
-                <textarea
-                  name="message"
-                  value={formData.message}
+        <form onSubmit={handleSubmit} className="bg-card rounded-2xl shadow-sm p-8 md:p-10 space-y-6 border border-border">
+          <div className="grid md:grid-cols-2 gap-6">
+            {/* Name */}
+            <div>
+              <label className="block text-sm font-semibold text-foreground mb-3">Full Name</label>
+              <div className="relative">
+                <User size={18} className="absolute left-3 top-3.5 text-muted-foreground pointer-events-none" />
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
                   onChange={handleChange}
-                  placeholder="Tell us about your symptoms or concerns..."
-                  rows={4}
-                  className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition resize-none"
+                  placeholder="John Doe"
+                  required
+                  className="w-full pl-10 pr-4 py-3 border border-border rounded-lg bg-input focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition"
                 />
               </div>
             </div>
 
-            {/* Submit Button */}
-            <div className="flex gap-4 pt-4">
-              <Button
-                type="submit"
-                size="lg"
-                className="flex-1 bg-primary hover:bg-primary/90 text-white"
-              >
-                Book Appointment
-              </Button>
-              <Button
-                type="reset"
-                size="lg"
-                variant="outline"
-                className="flex-1 border-primary text-primary hover:bg-primary/10"
-              >
-                Clear Form
-              </Button>
+            {/* Email */}
+            <div>
+              <label className="block text-sm font-semibold text-foreground mb-3">Email Address</label>
+              <div className="relative">
+                <Mail size={18} className="absolute left-3 top-3.5 text-muted-foreground pointer-events-none" />
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="john@example.com"
+                  required
+                  className="w-full pl-10 pr-4 py-3 border border-border rounded-lg bg-input focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition"
+                />
+              </div>
             </div>
-          </form>
+
+            {/* Phone */}
+            <div>
+              <label className="block text-sm font-semibold text-foreground mb-3">Phone Number</label>
+              <div className="relative">
+                <Phone size={18} className="absolute left-3 top-3.5 text-muted-foreground pointer-events-none" />
+                <input
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  placeholder="+1 (555) 123-4567"
+                  required
+                  className="w-full pl-10 pr-4 py-3 border border-border rounded-lg bg-input focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition"
+                />
+              </div>
+            </div>
+
+            {/* Date */}
+            <div>
+              <label className="block text-sm font-semibold text-foreground mb-3">Preferred Date</label>
+              <div className="relative">
+                <Calendar size={18} className="absolute left-3 top-3.5 text-muted-foreground pointer-events-none" />
+                <input
+                  type="date"
+                  name="date"
+                  value={formData.date}
+                  onChange={handleChange}
+                  required
+                  className="w-full pl-10 pr-4 py-3 border border-border rounded-lg bg-input focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Department */}
+          <div>
+            <label className="block text-sm font-semibold text-foreground mb-3">Select Department</label>
+            <div className="relative">
+              <Stethoscope size={18} className="absolute left-3 top-3.5 text-muted-foreground pointer-events-none" />
+              <select
+                name="department"
+                value={formData.department}
+                onChange={handleChange}
+                required
+                className="w-full pl-10 pr-4 py-3 border border-border rounded-lg bg-input focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition appearance-none"
+              >
+                {departments.map((dept, idx) => (
+                  <option key={idx} value={dept}>{dept}</option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          {/* Message */}
+          <div>
+            <label className="block text-sm font-semibold text-foreground mb-3">Medical Concern (Optional)</label>
+            <textarea
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              placeholder="Describe your symptoms or medical concern..."
+              rows={4}
+              className="w-full px-4 py-3 border border-border rounded-lg bg-input focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition resize-none"
+            />
+          </div>
+
+          {/* Submit Button */}
+          <Button
+            type="submit"
+            size="lg"
+            className="w-full bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg transition"
+          >
+            Book Appointment
+          </Button>
+
+          <p className="text-xs text-muted-foreground text-center">
+            We&apos;ll contact you within 24 hours to confirm your appointment.
+          </p>
+        </form>
         </div>
 
         {/* Info Cards */}

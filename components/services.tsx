@@ -36,39 +36,34 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="services" className="py-20 md:py-32 bg-white">
+    <section id="services" className="py-20 md:py-32 bg-secondary/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full mb-4">
-            <div className="w-2 h-2 bg-primary rounded-full" />
-            <span className="text-sm font-semibold text-primary">Our Services</span>
-          </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4 text-balance">
-            Comprehensive Medical Services
+          <span className="text-sm font-bold text-primary uppercase tracking-wider">Our Services</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4 mt-2 text-balance">
+            Specialized Medical Care
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-pretty">
-            We offer a wide range of medical specialties and services to meet all your healthcare needs
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            From preventive care to advanced treatments, we offer comprehensive medical services
           </p>
         </div>
 
         {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
               <div
                 key={index}
-                className="bg-background rounded-xl p-8 border border-border hover:shadow-lg hover:border-primary/30 transition group"
+                className="bg-white rounded-xl p-6 border border-border hover:shadow-lg hover:border-primary/40 transition group cursor-pointer"
               >
-                <div className="bg-primary/10 w-14 h-14 rounded-lg flex items-center justify-center mb-5 group-hover:bg-primary/20 transition">
-                  <Icon className="w-7 h-7 text-primary" />
+                <div className="bg-secondary w-12 h-12 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary/10 transition">
+                  <Icon className="w-6 h-6 text-primary" />
                 </div>
-                <h3 className="text-xl font-bold text-foreground mb-3">{service.title}</h3>
-                <p className="text-muted-foreground mb-6">{service.description}</p>
-                <Button variant="ghost" className="text-primary p-0 hover:bg-transparent hover:translate-x-1 transition">
-                  Learn More →
-                </Button>
+                <h3 className="text-lg font-bold text-foreground mb-2">{service.title}</h3>
+                <p className="text-muted-foreground text-sm mb-4 leading-relaxed">{service.description}</p>
+                <div className="h-1 w-8 bg-primary opacity-0 group-hover:opacity-100 transition" />
               </div>
             );
           })}
@@ -76,7 +71,7 @@ export default function Services() {
 
         {/* CTA */}
         <div className="mt-16 text-center">
-          <Button size="lg" className="bg-primary hover:bg-primary/90">
+          <Button size="lg" className="bg-primary hover:bg-primary/90 text-white rounded-lg font-semibold">
             Explore All Services
           </Button>
         </div>

@@ -3,16 +3,16 @@ import { AlertCircle, Phone, MapPin, Clock } from 'lucide-react';
 
 export default function Emergency() {
   return (
-    <section id="emergency" className="py-20 md:py-32 bg-gradient-to-br from-destructive/5 to-red-500/5">
+    <section id="emergency" className="py-20 md:py-32 bg-secondary/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Alert Banner */}
-        <div className="bg-white rounded-xl border-2 border-destructive/30 p-8 md:p-12 mb-12">
+        <div className="bg-white rounded-2xl border-2 border-primary/20 p-8 md:p-12 mb-12 shadow-sm">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             {/* Left Content */}
             <div>
               <div className="flex items-center gap-3 mb-6">
-                <AlertCircle className="w-8 h-8 text-destructive" />
-                <h2 className="text-3xl md:text-4xl font-bold text-destructive">Emergency Services</h2>
+                <AlertCircle className="w-8 h-8 text-primary" />
+                <h2 className="text-3xl md:text-4xl font-bold text-foreground">Emergency Services</h2>
               </div>
               <p className="text-lg text-muted-foreground mb-8 text-pretty">
                 Our 24/7 emergency department is fully equipped to handle all medical emergencies with rapid response times and expert care.
@@ -21,8 +21,8 @@ export default function Emergency() {
               {/* Emergency Features */}
               <div className="space-y-4 mb-8">
                 <div className="flex items-start gap-4">
-                  <div className="bg-destructive/10 w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                    <Phone className="w-5 h-5 text-destructive" />
+                  <div className="bg-primary/15 w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                    <Phone className="w-5 h-5 text-primary" />
                   </div>
                   <div>
                     <h3 className="font-bold text-foreground">24/7 Hotline</h3>
@@ -31,8 +31,8 @@ export default function Emergency() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="bg-destructive/10 w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                    <Clock className="w-5 h-5 text-destructive" />
+                  <div className="bg-primary/15 w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                    <Clock className="w-5 h-5 text-primary" />
                   </div>
                   <div>
                     <h3 className="font-bold text-foreground">Quick Response</h3>
@@ -41,8 +41,8 @@ export default function Emergency() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="bg-destructive/10 w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                    <MapPin className="w-5 h-5 text-destructive" />
+                  <div className="bg-primary/15 w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                    <MapPin className="w-5 h-5 text-primary" />
                   </div>
                   <div>
                     <h3 className="font-bold text-foreground">Ambulance Service</h3>
