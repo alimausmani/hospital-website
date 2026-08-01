@@ -1,25 +1,37 @@
-import Header from '@/components/header';
-import Hero from '@/components/hero';
-import Services from '@/components/services';
-import Departments from '@/components/departments';
-import Doctors from '@/components/doctors';
-import Appointment from '@/components/appointment';
-import Testimonials from '@/components/testimonials';
-import Emergency from '@/components/emergency';
-import Footer from '@/components/footer';
+import Header from '@/components/premium/header';
+import Hero from '@/components/premium/hero';
+import About from '@/components/premium/about';
+import WhyChooseUs from '@/components/premium/why-choose-us';
+import Departments from '@/components/premium/departments';
+import Doctors from '@/components/premium/doctors';
+import Services from '@/components/premium/services';
+import Facilities from '@/components/premium/facilities';
+import Testimonials from '@/components/premium/testimonials';
+import Gallery from '@/components/premium/gallery';
+import Emergency from '@/components/premium/emergency';
+import FAQ from '@/components/premium/faq';
+import Contact from '@/components/premium/contact';
+import Footer from '@/components/premium/footer';
+import FloatingButtons from '@/components/premium/floating-buttons';
 
 export default function Home() {
   return (
-    <main className="bg-background">
+    <main className="bg-white">
       <Header />
       <Hero />
-      <Services />
+      <About />
+      <WhyChooseUs />
       <Departments />
       <Doctors />
-      <Appointment />
+      <Services />
+      <Facilities />
       <Testimonials />
+      <Gallery />
       <Emergency />
+      <FAQ />
+      <Contact />
       <Footer />
+      <FloatingButtons />
     </main>
   );
 }

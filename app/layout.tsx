@@ -1,26 +1,20 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
+import { Poppins } from 'next/font/google'
 import './globals.css'
 
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800'],
+  variable: '--font-poppins',
+})
+
 export const metadata: Metadata = {
-  title: 'HealthCare Plus Hospital | Premier Multi-Specialty Medical Services',
-  description: 'Leading multi-specialty hospital providing comprehensive medical care, emergency services, and expert healthcare professionals. Book appointments online.',
+  title: 'WADIVARHE Multi-Speciality Hospital | Premium Healthcare',
+  description: 'Quality healthcare for every family. Advanced medical care with experienced doctors, modern facilities, and 24×7 emergency services.',
   generator: 'v0.app',
   icons: {
-    icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
+    icon: '/favicon.ico',
     apple: '/apple-icon.png',
   },
 }
@@ -28,7 +22,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   colorScheme: 'light',
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#0066CC' },
+    { media: '(prefers-color-scheme: light)', color: '#2563EB' },
   ],
 }
 
@@ -38,8 +32,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className="antialiased">
+    <html lang="en" className={poppins.variable}>
+      <body className="font-poppins antialiased bg-white text-gray-900">
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>

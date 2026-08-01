@@ -48,23 +48,23 @@
 :root {
   color-scheme: light;
   --background: #ffffff;
-  --foreground: #1a1a2e;
-  --card: #f8fbff;
-  --card-foreground: #1a1a2e;
+  --foreground: #111827;
+  --card: #ffffff;
+  --card-foreground: #111827;
   --popover: #ffffff;
-  --popover-foreground: #1a1a2e;
-  --primary: #0052cc;
+  --popover-foreground: #111827;
+  --primary: #2563EB;
   --primary-foreground: #ffffff;
-  --secondary: #e8f1ff;
-  --secondary-foreground: #0052cc;
-  --muted: #f5f7fa;
-  --muted-foreground: #6b7280;
-  --accent: #0052cc;
+  --secondary: #1D4ED8;
+  --secondary-foreground: #ffffff;
+  --muted: #F3F4F6;
+  --muted-foreground: #6B7280;
+  --accent: #16A34A;
   --accent-foreground: #ffffff;
-  --destructive: #dc3545;
-  --border: #e5e7eb;
-  --input: #f9fafb;
-  --ring: #0052cc;
+  --destructive: #EF4444;
+  --border: #E5E7EB;
+  --input: #F9FAFB;
+  --ring: #2563EB;
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
@@ -159,5 +159,27 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+  
+  @font-face {
+    font-family: 'Poppins';
+  }
+}
+
+@layer components {
+  .font-poppins {
+    font-family: var(--font-poppins), system-ui, sans-serif;
+  }
+  
+  .gradient-blue {
+    @apply bg-gradient-to-r from-blue-600 to-blue-400;
+  }
+  
+  .smooth-shadow {
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  }
+  
+  .smooth-shadow-lg {
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
   }
 }
