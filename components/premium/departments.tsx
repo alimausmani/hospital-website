@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Heart, Bone, Brain, Baby, Flower, Eye, Scalpel, AlertCircle, Microscope, Radio, Dumbbell, HeartHandshake } from 'lucide-react';
+import { Heart, Bone, Brain, Baby, Leaf, Eye, Activity, AlertCircle, Microscope, Radio, Dumbbell, HeartHandshake } from 'lucide-react';
 
 export default function Departments() {
   const departments = [
@@ -9,9 +9,9 @@ export default function Departments() {
     { icon: Bone, name: 'Orthopaedics', description: 'Bone and joint treatments' },
     { icon: Brain, name: 'Neurology', description: 'Neurological disorders' },
     { icon: Baby, name: 'Paediatrics', description: 'Child and infant care' },
-    { icon: Flower, name: 'Dermatology', description: 'Skin care and treatment' },
+    { icon: Leaf, name: 'Dermatology', description: 'Skin care and treatment' },
     { icon: Eye, name: 'Ophthalmology', description: 'Eye health and vision' },
-    { icon: Scalpel, name: 'General Surgery', description: 'Surgical procedures' },
+    { icon: Activity, name: 'General Surgery', description: 'Surgical procedures' },
     { icon: AlertCircle, name: 'Emergency', description: 'Emergency medical care' },
     { icon: Microscope, name: 'Laboratory', description: 'Diagnostic testing' },
     { icon: Radio, name: 'Radiology', description: 'Imaging services' },
